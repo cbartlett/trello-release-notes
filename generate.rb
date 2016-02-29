@@ -42,7 +42,7 @@ class Generator
   def output
     puts "Here's a list of all the work deployed in the last week:"
     groups.each do |headline,cards|
-      puts "## #{headline}" if headline
+      puts "## #{headline || 'New Features & Changes'}:"
       puts cards.map(&:bullet)
     end
     puts "_This list was automatically generated. Contact @cbartlett for questions or comments._"
