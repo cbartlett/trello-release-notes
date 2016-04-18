@@ -21,6 +21,15 @@ And two keys to specify the Trello board and list:
 * `BOARD_ID` You can grab this from the URL of your board. Looks something like `Xq0l01mR`.
 * `LIST_NAME` This is just the name of the list you want to pull the cards from.
 
+It is also possible to specify the author name in the environment so
+that the output message attributes the release notes to the proper point
+of contact for that project:
+
+* `SLACK_NAME` This is the slack name of the author _WITH_ the `@`
+  character. (i.e. `@michaelk`).  If this variable is not provided the
+script still defaults to our illustrious leader's slack name,
+`@cbartlett`.
+
 ## Labels
 
 In our organization, we label some cards with specific labels to indicate certain attributes.

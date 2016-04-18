@@ -45,7 +45,7 @@ class Generator
       puts "## #{headline || 'New Features & Changes'}:"
       puts cards.map(&:bullet)
     end
-    puts "_This list was automatically generated. Contact @cbartlett for questions or comments._"
+    puts "_This list was automatically generated. Contact #{ENV['SLACK_NAME'] || '@cbartlett'} for questions or comments._"
   end
 end
 
