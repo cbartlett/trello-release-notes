@@ -18,8 +18,12 @@ Two Trello keys you can get by following the [Ruby Trello gem README](https://gi
 
 And two keys to specify the Trello board and list:
 
-* `BOARD_ID` You can grab this from the URL of your board. Looks something like `Xq0l01mR`.
-* `LIST_NAME` This is just the name of the list you want to pull the cards from.
+* `BOARD_ID`: You can grab this from the URL of your board. Looks something like `Xq0l01mR`.
+* `LIST_NAME`: This is just the name of the list you want to pull the cards from.
+
+If you have an "In Progress" column and want to track both the total and active lifespan of a card:
+
+* `IN_PROGRESS_LIST_NAME`: Name of the list that, upon adding a card for the first time, begins a card's active lifespan.
 
 It is also possible to specify the author name in the environment so
 that the output message attributes the release notes to the proper point
