@@ -104,12 +104,12 @@ class Generator
   end
 
   def output
-    puts "Here's a list of all the work deployed in the last week:"
+    puts "Here's a list of all the work deployed in the last release:"
     groups.each do |headline, cards|
       puts "## #{headline || 'New Features & Changes'}:"
       puts cards.map { |c| c.bullet(list, in_progress_lists) }
     end
-    puts "_This list was automatically generated. Contact #{ENV['SLACK_NAME'] || '@cbartlett'} for questions or comments._"
+    puts "_This list was automatically generated. Contact us for questions or comments._"
   end
 end
 
