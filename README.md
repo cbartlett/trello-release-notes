@@ -44,4 +44,4 @@ please.
 
 ## License
 
-Copyright (c) 2016 Assembled Brands.  Distributed under the terms of the MIT License.
+Copyright (c) 2019 Colin Bartlett. Distributed under the terms of the MIT License.
