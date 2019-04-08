@@ -1,6 +1,6 @@
 This simple script generates a Markdown-compliant text list with links each card in a given Trello list.
 
-At Assembled Brands, we use this to generate release notes which we paste into Slack. Then we archive all the cards in the list and start off a new week.
+We use this to generate release notes which we paste into Slack. Then we archive all the cards in the list and start off a new week.
 
 ## Requirements
 
