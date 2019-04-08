@@ -23,7 +23,7 @@ And two keys to specify the Trello board and list:
 
 If you have an "In Progress" column and want to track both the total and active lifespan of a card:
 
-* `IN_PROGRESS_LIST_NAME`: Name of the list that, upon adding a card for the first time, begins a card's active lifespan.
+* `IN_PROGRESS_LIST_NAMES`: Pipe-separated list of Trello list names that, upon adding a card for the first time, begins a card's active lifespan.
 
 It is also possible to specify the author name in the environment so
 that the output message attributes the release notes to the proper point

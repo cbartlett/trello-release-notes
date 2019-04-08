@@ -21,9 +21,9 @@ class Card < SimpleDelegator
     @link ||= "[#{name}](#{short_url})"
   end
 
-  def bullet(done_list, in_progress_list=nil)
+  def bullet(done_list, in_progress_lists=nil)
     total = lifespan(done_list).floor
-    active = active_lifespan(done_list, in_progress_list).floor
+    active = active_lifespan(done_list, in_progress_lists).floor
     total_label = total > 0 ? HumanTime.output(total) : nil
     active_label =  active > 0 ? HumanTime.output(active) : nil
     if active_label && total_label != active_label
@@ -71,8 +71,8 @@ class Card < SimpleDelegator
     last_appeared_in(done_list) - created_at
   end
 
-  def active_lifespan(done_list, in_progress_list)
-    starting = (first_appeared_in(in_progress_list) || created_at)
+  def active_lifespan(done_list, in_progress_lists)
+    starting = in_progress_lists.find {|x| first_appeared_in(x) } || created_at
     ending = last_appeared_in(done_list)
     ending - starting
   end
@@ -81,7 +81,7 @@ end
 class Generator
   BOARD_ID = ENV['BOARD_ID']
   LIST_NAME = ENV['LIST_NAME']
-  IN_PROGRESS_LIST_NAME = ENV['IN_PROGRESS_LIST_NAME']
+  IN_PROGRESS_LIST_NAMES = ENV['IN_PROGRESS_LIST_NAME'].split('|')
 
   def lists
     @lists ||= Trello::Board.find(BOARD_ID).lists
@@ -91,8 +91,8 @@ class Generator
     lists.find { |l| l.name == LIST_NAME }
   end
 
-  def in_progress_list
-    lists.find { |l| l.name == IN_PROGRESS_LIST_NAME }
+  def in_progress_lists
+    lists.select { |l| l.name == IN_PROGRESS_LIST_NAMES }
   end
 
   def cards
@@ -107,7 +107,7 @@ class Generator
     puts "Here's a list of all the work deployed in the last week:"
     groups.each do |headline, cards|
       puts "## #{headline || 'New Features & Changes'}:"
-      puts cards.map { |c| c.bullet(list, in_progress_list) }
+      puts cards.map { |c| c.bullet(list, in_progress_lists) }
     end
     puts "_This list was automatically generated. Contact #{ENV['SLACK_NAME'] || '@cbartlett'} for questions or comments._"
   end
